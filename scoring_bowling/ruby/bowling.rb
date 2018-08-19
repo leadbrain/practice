@@ -1,13 +1,13 @@
 class Bowling
   def initialize
-    @down_pins = 0
+    @down_pins = []
   end
 
   def roll(pin)
-    @down_pins += pin
+    @down_pins << pin
   end
 
   def score
-    @down_pins
+    @down_pins.sum
   end
 end
