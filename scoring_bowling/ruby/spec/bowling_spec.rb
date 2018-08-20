@@ -1,9 +1,9 @@
 require './bowling'
 
 describe Bowling do
+  let(:bowling) { Bowling.new }
   context 'gutter game' do
     it do
-      bowling = Bowling.new
       20.times{ bowling.roll(0) }
       expect(bowling.score).to eq(0)
     end
@@ -11,7 +11,6 @@ describe Bowling do
 
   context 'all ones' do
     it do
-      bowling = Bowling.new
       20.times{ bowling.roll(1) }
       expect(bowling.score).to eq(20)
     end
@@ -19,9 +18,7 @@ describe Bowling do
 
   context 'one spare' do
     it do
-      bowling = Bowling.new
-      bowling.roll(4)
-      bowling.roll(6)  # spare
+      makeSpare(bowling, 1)
       bowling.roll(3)
       17.times{ bowling.roll(0) }
       expect(bowling.score).to eq(17)
@@ -30,11 +27,21 @@ describe Bowling do
 
   context 'one strike' do
     it do
-      bowling = Bowling.new
-      bowling.roll(10) #strike
+      makeStrike(bowling, 1)
       bowling.roll(6)
       17.times{ bowling.roll(0) }
       expect(bowling.score).to eq(22)
     end
+  end
+
+  def makeSpare(bowling, count)
+    count.times do
+      bowling.roll(4)
+      bowling.roll(6)
+    end
+  end
+
+  def makeStrike(bowling, count)
+    count.times{ bowling.roll(10) }
   end
 end
