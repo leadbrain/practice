@@ -8,13 +8,14 @@ class Bowling
   end
 
   def score
-    @down_pins
-      .each_slice(2)
-      .map do |pins|
-        score = pins.first + pins.last
-        score += pins.first if score == 10
-        score
-      end
-      .sum
+    i = 0
+    total_score = 0
+    while i < @down_pins.size
+      score = @down_pins[i] + @down_pins[i+ 1]
+      score += @down_pins[i] if score == 10
+      total_score += score
+      i += 2
+    end
+    total_score
   end
 end
