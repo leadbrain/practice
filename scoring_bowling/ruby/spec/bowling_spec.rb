@@ -27,4 +27,14 @@ describe Bowling do
       expect(bowling.score).to eq(17)
     end
   end
+
+  context 'one strike' do
+    it do
+      bowling = Bowling.new
+      bowling.roll(10) #strike
+      bowling.roll(6)
+      17.times{ bowling.roll(0) }
+      expect(bowling.score).to eq(22)
+    end
+  end
 end
