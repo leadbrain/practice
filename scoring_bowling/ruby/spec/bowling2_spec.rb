@@ -114,6 +114,32 @@ describe Bowling2 do
     end
   end
 
+  context 'one strike game 5 frame' do
+    it do
+      game.shot(10)
+      game.shot(1)
+      game.shot(2)
+      6.times{ game.shot(0)}
+      expect(game.frame).to eq(5)
+    end
+
+    it do
+      game.shot(10)
+      game.shot(1)
+      game.shot(2)
+      6.times{ game.shot(0)}
+      expect(game.score).to eq(16)
+    end
+
+    it do
+      game.shot(10)
+      game.shot(1)
+      game.shot(2)
+      6.times{ game.shot(0)}
+      expect(game.end?).to eq(false)
+    end
+  end
+
   def spare_shot(game)
     game.shot(3)
     game.shot(7)
