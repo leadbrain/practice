@@ -91,8 +91,18 @@ describe Bowling2 do
   context 'one strike game' do
     it do
       game.shot(10)
-      18.times{ game.shot(0)}
+      game.shot(1)
+      game.shot(2)
+      16.times{ game.shot(0)}
       expect(game.frame).to eq(10)
+    end
+
+    it do
+      game.shot(10)
+      game.shot(1)
+      game.shot(2)
+      16.times{ game.shot(0)}
+      expect(game.score).to eq(16)
     end
   end
 
