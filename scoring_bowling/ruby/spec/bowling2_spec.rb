@@ -90,7 +90,7 @@ describe Bowling2 do
 
   context 'one strike game' do
     it do
-      game.shot(10)
+      strike_shot(game)
       game.shot(1)
       game.shot(2)
       16.times{ game.shot(0)}
@@ -98,7 +98,7 @@ describe Bowling2 do
     end
 
     it do
-      game.shot(10)
+      strike_shot(game)
       game.shot(1)
       game.shot(2)
       16.times{ game.shot(0)}
@@ -106,7 +106,7 @@ describe Bowling2 do
     end
 
     it do
-      game.shot(10)
+      strike_shot(game)
       game.shot(1)
       game.shot(2)
       16.times{ game.shot(0)}
@@ -116,7 +116,7 @@ describe Bowling2 do
 
   context 'one strike game 5 frame' do
     it do
-      game.shot(10)
+      strike_shot(game)
       game.shot(1)
       game.shot(2)
       6.times{ game.shot(0)}
@@ -124,7 +124,7 @@ describe Bowling2 do
     end
 
     it do
-      game.shot(10)
+      strike_shot(game)
       game.shot(1)
       game.shot(2)
       6.times{ game.shot(0)}
@@ -132,7 +132,7 @@ describe Bowling2 do
     end
 
     it do
-      game.shot(10)
+      strike_shot(game)
       game.shot(1)
       game.shot(2)
       6.times{ game.shot(0)}
@@ -143,5 +143,9 @@ describe Bowling2 do
   def spare_shot(game)
     game.shot(3)
     game.shot(7)
+  end
+
+  def strike_shot(game)
+    game.shot(10)
   end
 end
