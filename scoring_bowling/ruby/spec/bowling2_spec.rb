@@ -53,4 +53,20 @@ describe Bowling2 do
       expect(game.end?).to eq(false)
     end
   end
+
+  context 'one spare game' do
+    it do
+      spare_shot(game)
+      game.shot(4)
+      17.times{ game.shot(0) }
+      expect(game.frame).to eq(10)
+      expect(game.score).to eq(18)
+      expect(game.end?).to eq(true)
+    end
+  end
+
+  def spare_shot(game)
+    game.shot(3)
+    game.shot(7)
+  end
 end
