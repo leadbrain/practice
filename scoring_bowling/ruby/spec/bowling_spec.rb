@@ -21,7 +21,7 @@ describe Bowling do
       makeSpare(bowling, 1)
       bowling.roll(3)
       17.times{ bowling.roll(0) }
-      expect(bowling.score).to eq(17)
+      expect(bowling.score).to eq(16)
     end
   end
 
@@ -31,6 +31,48 @@ describe Bowling do
       bowling.roll(6)
       17.times{ bowling.roll(0) }
       expect(bowling.score).to eq(22)
+    end
+  end
+
+  context 'perfect game' do
+    it do
+      makeStrike(bowling, 12)
+      expect(bowling.score).to eq(300)
+    end
+  end
+
+  context 'example game' do
+    it do
+      bowling.roll(1)
+      bowling.roll(4)
+
+      bowling.roll(4)
+      bowling.roll(5)
+
+      bowling.roll(6)
+      bowling.roll(4)
+
+      bowling.roll(5)
+      bowling.roll(5)
+
+      bowling.roll(10)
+
+      bowling.roll(0)
+      bowling.roll(1)
+
+      bowling.roll(7)
+      bowling.roll(3)
+
+      bowling.roll(6)
+      bowling.roll(4)
+
+      bowling.roll(10)
+
+      bowling.roll(2)
+      bowling.roll(8)
+      bowling.roll(6)
+
+      expect(bowling.score).to eq(133)
     end
   end
 
