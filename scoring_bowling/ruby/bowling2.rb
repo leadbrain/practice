@@ -19,7 +19,7 @@ class Bowling2
   end
 
   def frame
-    @frame / 2
+    [@frame / 2, 10].min
   end
 
   def score
@@ -27,7 +27,7 @@ class Bowling2
   end
 
   def end?
-    (@frame / 2) == 10
+    (@frame / 2) >= 10
   end
 
   def add_bonus_score(pin)
@@ -39,6 +39,10 @@ class Bowling2
     if @strike_bonus_counter > 0
       @score += pin
       @strike_bonus_counter -= 1
+      if @strike_bonus_counter > 4
+        @score += pin
+        @strike_bonus_counter -= 1
+      end
     end
   end
 
