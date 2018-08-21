@@ -16,6 +16,6 @@ class Bowling2
   end
 
   def end?
-    true
+    (@frame / 2) == 10
   end
 end

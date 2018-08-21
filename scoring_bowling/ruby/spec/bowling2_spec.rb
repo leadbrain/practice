@@ -16,5 +16,15 @@ describe Bowling2 do
       10.times{ game.shot(0) }
       expect(game.frame).to eq(5)
     end
+
+    it do
+      10.times{ game.shot(0) }
+      expect(game.score).to eq(0)
+    end
+
+    it do
+      10.times{ game.shot(0) }
+      expect(game.end?).to eq(false)
+    end
   end
 end
