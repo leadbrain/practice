@@ -149,6 +149,23 @@ describe Bowling2 do
     end
   end
 
+  context 'perfect game 5 frame' do
+    it do
+      5.times{ strike_shot(game) }
+      expect(game.frame).to eq(5)
+    end
+
+    it do
+      5.times{ strike_shot(game) }
+      expect(game.score).to eq(90)
+    end
+
+    it do
+      5.times{ strike_shot(game) }
+      expect(game.end?).to eq(false)
+    end
+  end
+
   def spare_shot(game)
     game.shot(3)
     game.shot(7)
