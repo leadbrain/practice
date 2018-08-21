@@ -104,6 +104,14 @@ describe Bowling2 do
       16.times{ game.shot(0)}
       expect(game.score).to eq(16)
     end
+
+    it do
+      game.shot(10)
+      game.shot(1)
+      game.shot(2)
+      16.times{ game.shot(0)}
+      expect(game.end?).to eq(true)
+    end
   end
 
   def spare_shot(game)
