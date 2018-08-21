@@ -13,6 +13,9 @@ class Bowling2
       @score += pin
       @is_spare = false
     end
+    if pin == 10
+      @frame += 1
+    end
     @is_spare = (((@frame % 2) == 0) && ((@prev_pin + pin) == 10))
     @prev_pin = pin
   end

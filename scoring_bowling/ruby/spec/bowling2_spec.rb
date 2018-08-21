@@ -88,6 +88,14 @@ describe Bowling2 do
     end
   end
 
+  context 'one strike game' do
+    it do
+      game.shot(10)
+      18.times{ game.shot(0)}
+      expect(game.frame).to eq(10)
+    end
+  end
+
   def spare_shot(game)
     game.shot(3)
     game.shot(7)
