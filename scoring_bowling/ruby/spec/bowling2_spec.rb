@@ -27,4 +27,13 @@ describe Bowling2 do
       expect(game.end?).to eq(false)
     end
   end
+
+  context 'all 1' do
+    it do
+      20.times{ game.shot(1) }
+      expect(game.frame).to eq(10)
+      expect(game.score).to eq(20)
+      expect(game.end?).to eq(true)
+    end
+  end
 end

@@ -1,10 +1,12 @@
 class Bowling2
   def initialize
     @frame = 0
+    @score = 0
   end
 
   def shot(pin)
     @frame += 1
+    @score += pin
   end
 
   def frame
@@ -12,7 +14,7 @@ class Bowling2
   end
 
   def score
-    0
+    @score
   end
 
   def end?
