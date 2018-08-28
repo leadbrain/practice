@@ -3,16 +3,18 @@ class Bowling2
     @frame = 0
     @score = 0
     @prev_pin = 0
-    @is_spare = false
-    @strike_bonus_counter = 0
+    @spare = false
+    @strike = false
+    @strike_bonus = false
   end
 
   def shot(pin)
     @frame += 1
-    @score += pin
+    @score += pin if @frame < 20
+    @score += pin if @frame == 20 && @strike == false
 
     add_bonus_score(pin)
-    
+
     check_status(pin)
 
     @prev_pin = pin
@@ -31,27 +33,30 @@ class Bowling2
   end
 
   def add_bonus_score(pin)
-    if @is_spare
+    if @spare
       @score += pin
-      @is_spare = false
+      @spare = false
     end
 
-    if @strike_bonus_counter > 0
+    if @strike_bonus
       @score += pin
-      @strike_bonus_counter -= 1
-      if @strike_bonus_counter > 4
-        @score += pin
-        @strike_bonus_counter -= 1
-      end
+      @strike_bonus = false
     end
+
+    if @strike
+      @score += pin
+      @strike = false
+      @strike_bonus = true
+    end
+
   end
 
   def check_status(pin)
     if pin == 10
       @frame += 1
-      @strike_bonus_counter += 2
-    elsif (((@frame % 2) == 0) && ((@prev_pin + pin) == 10))
-      @is_spare = true
+      @strike = true if @frame < 21
+    elsif ((@frame % 2) == 0) && ((@prev_pin + pin) == 10)
+      @spare = true
     end
   end
 end
